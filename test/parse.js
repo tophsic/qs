@@ -132,6 +132,12 @@ describe('parse()', function () {
         done();
     });
 
+    it('supports keys that contains a dot', function (done) {
+
+        expect(Qs.parse('a[b.c]=d')).to.deep.equal({ a: { 'b.c': 'd' } }, { prototype: false });
+        done();
+    });
+
     it('supports encoded = signs', function (done) {
 
         expect(Qs.parse('he%3Dllo=th%3Dere')).to.deep.equal({ 'he=llo': 'th=ere' }, { prototype: false });
